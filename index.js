@@ -8,7 +8,7 @@ const gameRules = [
   "5-Enter exit to quit the game\n",
 ];
 
-let PlayerInput,
+let playerInput,
   playerScore = 0,
   computerScore = 0,
   rounds = 0;
@@ -19,67 +19,63 @@ const computerPlay = () => {
 };
 
 const game = (playerSelection, computerSelection) => {
-  if (gameWords.includes(playerSelection.toLowerCase().trim())) {
-    if (playerSelection.toLowerCase().trim() === computerSelection) {
-      rounds++;
-      return `Round: ${rounds},draw`;
-    }
+  if (playerSelection.toLowerCase().trim() === computerSelection) {
+    rounds++;
+    return `Round: ${rounds},draw`;
+  }
 
-    if (
-      computerSelection === "rock" &&
-      playerSelection.toLowerCase().trim() === "paper"
-    ) {
-      playerScore++;
-      rounds++;
-      return `Round: ${rounds}, you win! paper beats rock`;
-    }
+  if (
+    computerSelection === "rock" &&
+    playerSelection.toLowerCase().trim() === "paper"
+  ) {
+    playerScore++;
+    rounds++;
+    return `Round: ${rounds}, you win! paper beats rock`;
+  }
 
-    if (
-      computerSelection === "paper" &&
-      playerSelection.toLowerCase().trim() === "scissors"
-    ) {
-      playerScore++;
-      rounds++;
-      return `Round: ${rounds}, you win! scissors beats paper`;
-    }
+  if (
+    computerSelection === "paper" &&
+    playerSelection.toLowerCase().trim() === "scissors"
+  ) {
+    playerScore++;
+    rounds++;
+    return `Round: ${rounds}, you win! scissors beats paper`;
+  }
 
-    if (
-      computerSelection === "scissors" &&
-      playerSelection.toLowerCase().trim() === "rock"
-    ) {
-      playerScore++;
-      rounds++;
-      return `Round: ${rounds}, you win! rock beats scissors`;
-    }
+  if (
+    computerSelection === "scissors" &&
+    playerSelection.toLowerCase().trim() === "rock"
+  ) {
+    playerScore++;
+    rounds++;
+    return `Round: ${rounds}, you win! rock beats scissors`;
+  }
 
-    if (
-      computerSelection === "paper" &&
-      playerSelection.toLowerCase().trim() === "rock"
-    ) {
-      computerScore++;
-      rounds++;
-      return `Round: ${rounds}, you lose! paper beats rock`;
-    }
+  if (
+    computerSelection === "paper" &&
+    playerSelection.toLowerCase().trim() === "rock"
+  ) {
+    computerScore++;
+    rounds++;
+    return `Round: ${rounds}, you lose! paper beats rock`;
+  }
 
-    if (
-      computerSelection === "scissors" &&
-      playerSelection.toLowerCase().trim() === "paper"
-    ) {
-      computerScore++;
-      rounds++;
-      return `Round: ${rounds}, you lose! scissors beats paper`;
-    }
+  if (
+    computerSelection === "scissors" &&
+    playerSelection.toLowerCase().trim() === "paper"
+  ) {
+    computerScore++;
+    rounds++;
+    return `Round: ${rounds}, you lose! scissors beats paper`;
+  }
 
-    if (
-      computerSelection === "rock" &&
-      playerSelection.toLowerCase().trim() === "scissors"
-    ) {
-      computerScore++;
-      rounds++;
-      return `Round: ${rounds}, you lose! rock beats scissors`;
-    }
-  } else {
-    return "You can only enter words such as rock, paper,scissors";
+  if (
+    computerSelection === "rock" &&
+    playerSelection.toLowerCase().trim() === "scissors"
+  ) {
+    computerScore++;
+    rounds++;
+    return `Round: ${rounds}, you lose! rock beats scissors`;
   }
 };
 
@@ -90,17 +86,22 @@ const winner = () => {
 };
 
 
+
 (function main() {
   alert(
     `Welcome to Rock Paper Scissors Game\n Rules of the game:\n  ${gameRules[0]}  ${gameRules[1]}  ${gameRules[2]}  ${gameRules[3]}  ${gameRules[4]}`
   );
 
-  while (PlayerInput !== "exit") {
-    PlayerInput = prompt(
+  while (playerInput !== "exit") {
+    playerInput = prompt(
       "Enter a Word shuch as Rock, Paper, scissors to play or exit to quit the game"
     );
 
-    PlayerInput !== "exit" && console.log(game(PlayerInput, computerPlay()));
+    if (gameWords.includes(playerSelection.toLowerCase().trim())) {
+      playerInput !== "exit" && console.log(game(playerInput, computerPlay()));
+    } else {
+      console.log("You can only enter words such as rock, paper,scissors");
+    }
 
     if (rounds === 5) {
       alert(
