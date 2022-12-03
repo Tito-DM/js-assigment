@@ -19,15 +19,15 @@ const computerPlay = () => {
 };
 
 const game = (playerSelection, computerSelection) => {
-  if (gameWords.includes(playerSelection.toLowerCase())) {
-    if (playerSelection.toLowerCase() === computerSelection) {
+  if (gameWords.includes(playerSelection.toLowerCase().trim())) {
+    if (playerSelection.toLowerCase().trim() === computerSelection) {
       rounds++;
       return `Round: ${rounds},draw`;
     }
 
     if (
       computerSelection === "rock" &&
-      playerSelection.toLowerCase() === "paper"
+      playerSelection.toLowerCase().trim() === "paper"
     ) {
       playerScore++;
       rounds++;
@@ -36,7 +36,7 @@ const game = (playerSelection, computerSelection) => {
 
     if (
       computerSelection === "paper" &&
-      playerSelection.toLowerCase() === "scissors"
+      playerSelection.toLowerCase().trim() === "scissors"
     ) {
       playerScore++;
       rounds++;
@@ -45,7 +45,7 @@ const game = (playerSelection, computerSelection) => {
 
     if (
       computerSelection === "scissors" &&
-      playerSelection.toLowerCase() === "rock"
+      playerSelection.toLowerCase().trim() === "rock"
     ) {
       playerScore++;
       rounds++;
@@ -54,7 +54,7 @@ const game = (playerSelection, computerSelection) => {
 
     if (
       computerSelection === "paper" &&
-      playerSelection.toLowerCase() === "rock"
+      playerSelection.toLowerCase().trim() === "rock"
     ) {
       computerScore++;
       rounds++;
@@ -63,7 +63,7 @@ const game = (playerSelection, computerSelection) => {
 
     if (
       computerSelection === "scissors" &&
-      playerSelection.toLowerCase() === "paper"
+      playerSelection.toLowerCase().trim() === "paper"
     ) {
       computerScore++;
       rounds++;
@@ -72,7 +72,7 @@ const game = (playerSelection, computerSelection) => {
 
     if (
       computerSelection === "rock" &&
-      playerSelection.toLowerCase() === "scissors"
+      playerSelection.toLowerCase().trim() === "scissors"
     ) {
       computerScore++;
       rounds++;
