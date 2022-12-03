@@ -97,7 +97,7 @@ const winner = () => {
       "Enter a Word shuch as Rock, Paper, scissors to play or exit to quit the game"
     );
 
-    if (gameWords.includes(playerSelection.toLowerCase().trim())) {
+    if (gameWords.includes(playerInput.toLowerCase().trim())) {
       playerInput !== "exit" && console.log(game(playerInput, computerPlay()));
     } else {
       console.log("You can only enter words such as rock, paper,scissors");
