@@ -19,51 +19,36 @@ const computerPlay = () => {
 };
 
 const game = (playerSelection, computerSelection) => {
-  if (playerSelection.toLowerCase().trim() === computerSelection) {
+  if (playerSelection === computerSelection) {
     rounds++;
     return `Round: ${rounds},draw`;
   }
 
-  if (
-    computerSelection === "rock" &&
-    playerSelection.toLowerCase().trim() === "paper"
-  ) {
+  if (computerSelection === "rock" && playerSelection === "paper") {
     playerScore++;
     rounds++;
     return `Round: ${rounds}, you win! paper beats rock`;
   }
 
-  if (
-    computerSelection === "paper" &&
-    playerSelection.toLowerCase().trim() === "scissors"
-  ) {
+  if (computerSelection === "paper" && playerSelection === "scissors") {
     playerScore++;
     rounds++;
     return `Round: ${rounds}, you win! scissors beats paper`;
   }
 
-  if (
-    computerSelection === "scissors" &&
-    playerSelection.toLowerCase().trim() === "rock"
-  ) {
+  if (computerSelection === "scissors" && playerSelection === "rock") {
     playerScore++;
     rounds++;
     return `Round: ${rounds}, you win! rock beats scissors`;
   }
 
-  if (
-    computerSelection === "paper" &&
-    playerSelection.toLowerCase().trim() === "rock"
-  ) {
+  if (computerSelection === "paper" && playerSelection === "rock") {
     computerScore++;
     rounds++;
     return `Round: ${rounds}, you lose! paper beats rock`;
   }
 
-  if (
-    computerSelection === "scissors" &&
-    playerSelection.toLowerCase().trim() === "paper"
-  ) {
+  if (computerSelection === "scissors" && playerSelection === "paper") {
     computerScore++;
     rounds++;
     return `Round: ${rounds}, you lose! scissors beats paper`;
@@ -85,8 +70,6 @@ const winner = () => {
   return "Player";
 };
 
-
-
 (function main() {
   alert(
     `Welcome to Rock Paper Scissors Game\n Rules of the game:\n  ${gameRules[0]}  ${gameRules[1]}  ${gameRules[2]}  ${gameRules[3]}  ${gameRules[4]}`
@@ -98,7 +81,8 @@ const winner = () => {
     );
 
     if (gameWords.includes(playerInput.toLowerCase().trim())) {
-      playerInput !== "exit" && console.log(game(playerInput, computerPlay()));
+      playerInput !== "exit" &&
+        console.log(game(playerInput.toLowerCase().trim(), computerPlay()));
     } else {
       console.log("You can only enter words such as rock, paper,scissors");
     }
