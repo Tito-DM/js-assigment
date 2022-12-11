@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./index.js" difer ></script>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock paper scissors</title>
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+
+    <header class="header">
+      <h1>Rock paper scissors Game</h1>
+    </header>
+
+    <main class="container">
+      <section class="btnContainer">
+        <button class="btn" id="rockBtn">Rock</button>
+        <button class="btn" id="paperBtn">Paper</button>
+        <button class="btn" id="scissorsBtn">Scissors</button>
+      </section>
+
+      <section>
+        <div class="display-game-status">
+          <h3>game rouns:</h3>
+          <h3 class="gameRounds"></h3>
+        </div>
+
+        <div class="display-game-status">
+          <h3>game status:</h3>
+          <h3 class="gameStatus"></h3>
+        </div>
+
+        <div class="display-game-status">
+          <h3>player Poits:</h3>
+          <h3 class="playerPoits"></h3>
+        </div>
+
+        <div class="display-game-status">
+          <h3>Computer Poits:</h3>
+          <h3 class="computerPoints"></h3>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

@@ -1,17 +1,17 @@
-const gameWords = ["rock", "paper", "scissors"];
+const rockBtn = document.getElementById("rockBtn"),
+  paperBtn = document.getElementById("paperBtn"),
+  scissorsBtn = document.getElementById("scissorsBtn"),
+  playerPointsDisplay = document.querySelector(".playerPoits"),
+  computerPointsDisplay = document.querySelector(".computerPoints"),
+  gameStatus = document.querySelector(".gameStatus"),
+  gameWiiner = document.querySelector(".gameWiiner"),
+  gameRounds = document.querySelector(".gameRounds");
 
-const gameRules = [
-  "1-You can only enter words such as Rock, Paper, Sissors\n",
-  "2-rock beats scissors\n",
-  "3-paper beats rock\n",
-  "4-scissors beats paper\n",
-  "5-Enter exit to quit the game\n",
-];
-
-let playerInput,
-  playerScore = 0,
+let playerScore = 0,
   computerScore = 0,
   rounds = 0;
+
+const gameWords = ["rock", "paper", "scissors"];
 
 const computerPlay = () => {
   const randomPosition = Math.floor(Math.random() * (gameWords.length - 0) + 0);
@@ -21,37 +21,37 @@ const computerPlay = () => {
 const game = (playerSelection, computerSelection) => {
   if (playerSelection === computerSelection) {
     rounds++;
-    return `Round: ${rounds},draw`;
+    return `draw`;
   }
 
   if (computerSelection === "rock" && playerSelection === "paper") {
     playerScore++;
     rounds++;
-    return `Round: ${rounds}, you win! paper beats rock`;
+    return `you win! paper beats rock`;
   }
 
   if (computerSelection === "paper" && playerSelection === "scissors") {
     playerScore++;
     rounds++;
-    return `Round: ${rounds}, you win! scissors beats paper`;
+    return `you win! scissors beats paper`;
   }
 
   if (computerSelection === "scissors" && playerSelection === "rock") {
     playerScore++;
     rounds++;
-    return `Round: ${rounds}, you win! rock beats scissors`;
+    return `you win! rock beats scissors`;
   }
 
   if (computerSelection === "paper" && playerSelection === "rock") {
     computerScore++;
     rounds++;
-    return `Round: ${rounds}, you lose! paper beats rock`;
+    return `you lose! paper beats rock`;
   }
 
   if (computerSelection === "scissors" && playerSelection === "paper") {
     computerScore++;
     rounds++;
-    return `Round: ${rounds}, you lose! scissors beats paper`;
+    return `you lose! scissors beats paper`;
   }
 
   if (
@@ -60,42 +60,46 @@ const game = (playerSelection, computerSelection) => {
   ) {
     computerScore++;
     rounds++;
-    return `Round: ${rounds}, you lose! rock beats scissors`;
+    return `you lose! rock beats scissors`;
   }
 };
 
-const winner = () => {
-  if (playerScore === computerPlay) return "draw";
-  if (computerScore > playerScore) return "Computer";
-  return "Player";
+const gameWinner = () => {
+  gameRounds.textContent = rounds;
+  playerPointsDisplay.textContent = playerScore;
+  computerPointsDisplay.textContent = computerScore;
+
+  if (playerScore === 5) {
+    alert("You win congratulations 🎇 🎉  🎉");
+    playerScore = 0;
+    computerScore = 0;
+    rounds = 0;
+    gameStatus.textContent = "";
+    playerPointsDisplay.textContent = "";
+    computerPointsDisplay.textContent = "";
+    gameRounds.textContent = "";
+  }
+  if (computerScore === 5) {
+    alert("You Lose, 😧 😭 sorry try again ");
+    playerScore = 0;
+    computerScore = 0;
+    rounds = 0;
+    gameStatus.textContent = "";
+    playerPointsDisplay.textContent = "";
+    computerPointsDisplay.textContent = "";
+    gameRounds.textContent = "";
+  }
 };
 
-(function main() {
-  alert(
-    `Welcome to Rock Paper Scissors Game\n Rules of the game:\n  ${gameRules[0]}  ${gameRules[1]}  ${gameRules[2]}  ${gameRules[3]}  ${gameRules[4]}`
-  );
-
-  while (playerInput !== "exit") {
-    playerInput = prompt(
-      "Enter a Word shuch as Rock, Paper, scissors to play or exit to quit the game"
-    );
-
-    if (gameWords.includes(playerInput.toLowerCase().trim())) {
-      playerInput !== "exit" &&
-        console.log(game(playerInput.toLowerCase().trim(), computerPlay()));
-    } else {
-      console.log("You can only enter words such as rock, paper,scissors");
-    }
-
-    if (rounds === 5) {
-      alert(
-        `Payer Score: ${playerScore}\n Computer Socre: ${computerScore}\n Winner: ${winner()}`
-      );
-
-      rounds = 0;
-      playerScore = 0;
-      computerScore = 0;
-      console.clear();
-    }
-  }
-})();
+rockBtn.addEventListener("click", () => {
+  gameStatus.textContent = game("rock", computerPlay());
+  gameWinner();
+});
+paperBtn.addEventListener("click", () => {
+  gameStatus.textContent = game("paper", computerPlay());
+  gameWinner();
+});
+scissorsBtn.addEventListener("click", () => {
+  gameStatus.textContent = game("scissors", computerPlay());
+  gameWinner();
+});
